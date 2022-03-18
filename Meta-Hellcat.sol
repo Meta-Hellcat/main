@@ -1,13 +1,13 @@
- /**
+/**
   *Submitted for verification at BscScan.com on 2022-02-01
   */
 
-  /**
-  *Submitted for verification at BscScan.com on 2021-05-22
+/**
+  *Submitted for verification at BscScan.com on 2021-03-18
   */
 // coder by Angel tg:https://t.me/GoodAngel8
 pragma solidity ^0.6.12;
-  // SPDX-License-Identifier: Unlicensed
+// SPDX-License-Identifier: Unlicensed
 interface IERC20 {
 
   function totalSupply() external view returns (uint256);
